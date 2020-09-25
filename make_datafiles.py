@@ -16,9 +16,9 @@ END_TOKENS = ['.', '!', '?', '...', "'", "`", '"', dm_single_close_quote, dm_dou
 SENTENCE_START = '<s>'
 SENTENCE_END = '</s>'
 
-all_train_urls = "url_lists/all_train.txt"
-all_val_urls = "url_lists/all_val.txt"
-all_test_urls = "url_lists/all_test.txt"
+all_train_urls = "/content/drive/My Drive/Internship/cnn-dailymail/url_lists/all_train.txt"
+all_val_urls = "/content/drive/My Drive/Internship/cnn-dailymail/url_lists/all_val.txt"
+all_test_urls = "/content/drive/My Drive/Internship/cnn-dailymail/url_lists/all_test.txt"
 
 cnn_tokenized_stories_dir = "cnn_stories_tokenized"
 dm_tokenized_stories_dir = "dm_stories_tokenized"
@@ -73,7 +73,7 @@ def tokenize_stories(stories_dir, tokenized_stories_dir):
   with open("mapping.txt", "w") as f:
     for s in stories:
       f.write("%s \t %s\n" % (os.path.join(stories_dir, s), os.path.join(tokenized_stories_dir, s)))
-  command = ['java', 'edu.stanford.nlp.process.PTBTokenizer', '-ioFileList', '-preserveLines', 'mapping.txt']
+  command = ['java','-cp', '/content/stanford-corenlp-4.1.0/stanford-corenlp-4.1.0.jar', 'edu.stanford.nlp.process.PTBTokenizer', '-ioFileList', '-preserveLines', 'mapping.txt']
   print("Tokenizing %i files in %s and saving in %s..." % (len(stories), stories_dir, tokenized_stories_dir))
   subprocess.call(command)
   print("Stanford CoreNLP Tokenizer has finished.")
