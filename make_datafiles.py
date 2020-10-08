@@ -235,8 +235,8 @@ if __name__ == '__main__':
     # dm_stories_dir = sys.argv[2]
 
     # Check the stories directories contain the correct number of .story files
-    check_num_stories(cnn_stories_dir, num_expected_cnn_stories)
-    # check_num_stories(dm_stories_dir, num_expected_dm_stories)
+    # check_num_stories(cnn_stories_dir, num_expected_cnn_stories)
+    # check_num_stories(dm_stories_dir, num_expected_dm_ stories)
 
     # Create some new directories
     if not os.path.exists(cnn_tokenized_stories_dir): os.makedirs(cnn_tokenized_stories_dir)
