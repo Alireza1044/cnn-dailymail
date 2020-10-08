@@ -5,8 +5,6 @@ import struct
 import subprocess
 import collections
 import tensorflow as tf
-reload(sys)  # Reload does the trick!
-sys.setdefaultencoding('UTF8')
 from tensorflow.core.example import example_pb2
 
 dm_single_close_quote = u'\u2019'  # unicode
@@ -193,8 +191,8 @@ def write_to_bin(url_file, out_file, makevocab=False):
 
             # Write to tf.Example
             tf_example = example_pb2.Example()
-            tf_example.features.feature['article'].bytes_list.value.extend([article.encode()])
-            tf_example.features.feature['abstract'].bytes_list.value.extend([abstract.encode()])
+            tf_example.features.feature['article'].bytes_list.value.extend([article.encode('utf8')])
+            tf_example.features.feature['abstract'].bytes_list.value.extend([abstract.encode('utf8')])
             tf_example_str = tf_example.SerializeToString()
             str_len = len(tf_example_str)
             writer.write(struct.pack('q', str_len))
