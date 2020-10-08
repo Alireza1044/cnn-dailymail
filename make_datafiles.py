@@ -5,6 +5,8 @@ import struct
 import subprocess
 import collections
 import tensorflow as tf
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
 from tensorflow.core.example import example_pb2
 
 dm_single_close_quote = u'\u2019'  # unicode
